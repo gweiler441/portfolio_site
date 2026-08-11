@@ -1,0 +1,661 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
+/* =====================================================
+   DESIGN TOKENS
+
+   How the per-page color system works:
+   Every component below (buttons, borders, tags, the art
+   strip) is written using --color-accent-1, --color-accent-2,
+   --color-accent-3 (and --color-accent-4 where needed) —
+   never a hardcoded color name. The :root block below sets
+   those slots to your LANDING PAGE earth palette. Then each
+   subpage's <body class="page-..."> block further down
+   OVERRIDES those same slots with its own palette. Because
+   CSS variables cascade, every component instantly repaints
+   in that page's colors without needing separate rules per
+   page. Change a page's mood by editing its body.page-*
+   block only — the components never need to change.
+   ===================================================== */
+:root {
+  /* --- Shared across all pages --- */
+  --color-ink:          #24211D;
+  --color-muted:        #9B9385;
+  --color-card-bg:      #FFFFFF;
+
+  /* --- Landing page palette: earth tones, rich not muted --- */
+  --color-paper:        #F2EFE9;
+  --color-accent-1:     #2D1A11;  /* brown */
+  --color-accent-2:     #015024;  /* green */
+  --color-accent-3:     #A37774;  /* rose */
+  --color-accent-4:     #3B6E8F;  /* blue */
+  --color-accent-1-wash: #E4D3C8;
+  --color-accent-2-wash: #DCE8D9;
+  --color-accent-3-wash: #EFE0DD;
+
+  /* Tag colors used by project-card[data-tag] — these track
+     which section a project belongs to, independent of which
+     page they're viewed on. */
+  --color-tag-design:   var(--color-accent-1);
+  --color-tag-research: var(--color-accent-2);
+  --color-tag-bridge:   var(--color-accent-3);
+
+  /* Fixed preview swatches for the landing page's fork
+     buttons — these deliberately do NOT use the accent
+     slots above, because the fork buttons need to show
+     each DESTINATION page's colors while sitting on the
+     landing page itself. Keep these in sync by hand with
+     each body.page-* block below if you change a palette. */
+  --preview-design-a:   #E5007D;
+  --preview-design-b:   #00AEEF;
+  --preview-design-c:   #FFD100;
+  --preview-research-a: #3A3F44;
+  --preview-research-b: #8A9199;
+  --preview-research-c: #9C3B2E;
+  --preview-work-a:     #5C3A21;
+  --preview-work-b:     #1B4332;
+  --preview-work-c:     #3B6E8F;
+
+  /* --- Fonts --- */
+  --font-display: "Big Shoulders", "Helvetica Neue", sans-serif;
+  --font-body:    "Roboto", "Segoe UI", sans-serif;
+  --font-mono:    "Roboto Mono", monospace;
+
+  /* --- Spacing scale --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  --radius: 4px;
+  --max-width: 1100px;
+}
+
+/* =====================================================
+   PAGE PALETTES — this is where each subpage's "color
+   language" is actually defined. Edit hex values here to
+   adjust a page's mood; you should never need to touch a
+   component rule below to do it.
+   ===================================================== */
+
+/* DESIGN — bright, CMYK/print-process energy, pulled from
+   your artwork. Paper goes near-white and ink near-black so
+   the bright accents read as crisply as printed color. */
+body.page-design {
+  --color-paper:   #FAFAFA;
+  --color-ink:      #101010;
+  --color-accent-1: #E5007D;  /* magenta */
+  --color-accent-2: #00AEEF;  /* cyan */
+  --color-accent-3: #FFD100;  /* yellow */
+  --color-accent-4: #101010;  /* key/black */
+  --color-accent-1-wash: #FCE0EF;
+  --color-accent-2-wash: #DFF4FC;
+  --color-accent-3-wash: #FFF7D6;
+}
+
+body.page-design .site-header {
+       background-image: url('../website_files/art/colormap.png');
+       background-size: cover;
+       background-position: center;
+     }
+
+body.page-home .site-header {
+       background-image: url('../website_files/art/bricks.jpg');
+       background-size: cover;
+       background-position: center;
+     }
+
+body.page-research .site-header {
+       background-image: url('../website_files/art/canyon2.png');
+       background-size: cover;
+       background-position: center;
+     }
+
+body.page-work .site-header {
+       background-image: url('../website_files/art/bricks.jpg');
+       background-size: cover;
+       background-position: center;
+     }
+
+
+/* RESEARCH — slate & grayscale with one pop of color, for
+   an academic register. */
+body.page-research {
+  --color-paper:   #F4F4F2;
+  --color-ink:      #1A1A1A;
+  --color-accent-1: #3A3F44;  /* slate dark */
+  --color-accent-2: #8A9199;  /* slate mid */
+  --color-accent-3: #9C3B2E;  /* pop — deep crimson */
+  --color-accent-1-wash: #E4E6E8;
+  --color-accent-2-wash: #EEEFEF;
+  --color-accent-3-wash: #F1DEDA;
+}
+
+/* Extra emphasis for the crimson pop color specifically on
+   the research page — these override shared component rules
+   (which normally use --color-muted or accent-2) so the pop
+   color shows up more, without changing those components on
+   any other page. */
+body.page-research .site-header { border-bottom-color: var(--color-accent-3); }
+body.page-research .site-footer { border-top-color: var(--color-accent-3); }
+body.page-research .cv-block { border-top-color: var(--color-accent-3); }
+body.page-research .cv-item__date { color: var(--color-accent-3); }
+body.page-research .eyebrow { color: var(--color-accent-3); }
+
+/* WORK (bridge) — refined, richer earth tones than the
+   landing page: pine green, a warmer brown, a real blue. */
+body.page-work {
+  --color-paper:   #F2EFE9;
+  --color-ink:      #24211D;
+  --color-accent-1: #5C3A21;  /* richer brown */
+  --color-accent-2: #1B4332;  /* pine green */
+  --color-accent-3: #3B6E8F;  /* blue */
+  --color-accent-4: #6B6558;  /* refined grey */
+  --color-accent-1-wash: #E7DACE;
+  --color-accent-2-wash: #D9E5DE;
+  --color-accent-3-wash: #DCE8ED;
+}
+
+/* =====================================================
+   RESET
+   ===================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; }
+
+/* =====================================================
+   LAYOUT HELPERS
+   ===================================================== */
+main, .nav, .site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+section { padding: var(--space-lg) 0; }
+
+/* =====================================================
+   HEADER / NAV — "colorful" nav: each link takes on a
+   different accent slot on hover/active, so the nav itself
+   previews the site's color range, and automatically
+   re-colors to match whichever page's palette is active.
+   ===================================================== */
+.site-header {
+  border-bottom: 2px solid var(--color-accent-1);
+  background-image: linear-gradient(120deg,
+    var(--color-accent-2) 0%,
+    var(--color-accent-1) 50%,
+    var(--color-accent-3) 100%);
+  background-size: cover;
+  background-position: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: border-color 0.3s ease;
+}
+/* This gradient is a placeholder "strip" — it already changes
+   per page automatically, since it's built from the same
+   accent variables each body.page-* block overrides. To swap
+   in a real photo or art strip per page instead, add a rule
+   like this inside each body.page-* block further up:
+     body.page-design .site-header {
+       background-image: url('images/design-header.jpg');
+       background-size: cover;
+       background-position: center;
+     }
+*/
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+.nav__name {
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.9);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius);
+}
+.nav__links { display: flex; gap: var(--space-sm); }
+.nav__links a {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
+  background: rgba(255,255,255,0.9);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius);
+  display: inline-block;
+}
+.nav__links a:nth-child(1):hover, .nav__links a:nth-child(1).is-active { color: var(--color-accent-1); }
+.nav__links a:nth-child(2):hover, .nav__links a:nth-child(2).is-active { color: var(--color-accent-2); }
+.nav__links a:nth-child(3):hover, .nav__links a:nth-child(3).is-active { color: var(--color-accent-3); }
+
+@media (max-width: 700px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  .nav__links {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+}
+
+
+/* =====================================================
+   HERO (index.html)
+   ===================================================== */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-2);
+  margin-bottom: var(--space-xs);
+}
+.hero { padding-top: var(--space-xl); padding-bottom: var(--space-md); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+.hero__headline {
+  font-size: clamp(2rem, 6vw, 4rem);
+  max-width: 20ch;
+  margin-bottom: var(--space-sm);
+  color: var(--color-accent-1);
+}
+.hero__sub {
+  max-width: 60ch;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+}
+
+/* --- Rotating image slot next to the headline ---
+   Currently cycles through placeholder frames (see
+   js/script.js). Links to your work page. To use real
+   images: replace each .image-placeholder span with an
+   <img src="images/yourfile.jpg" alt="..."> tag. */
+.hero__image-slot {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 2px dashed var(--color-accent-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: block;
+  background: var(--color-accent-2-wash);
+}
+.hero__image-frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.hero__image-frame.is-active { opacity: 1; }
+
+@media (max-width: 800px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__image-slot { max-width: 320px; }
+}
+
+/* =====================================================
+   FORK — the three landing cards / portal buttons.
+   Each shows a static gradient preview of its destination
+   page's palette, and animates a slow color-cycle on hover.
+   ===================================================== */
+.fork {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  padding-bottom: var(--space-xl);
+}
+.fork__card {
+  position: relative;
+  color: #fff;
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  background-size: 250% 250%;
+  background-position: 0% 50%;
+  transition: transform 0.15s ease, background-position 1.2s ease;
+  overflow: hidden;
+}
+.fork__card:hover {
+  transform: translateY(-4px);
+  background-position: 100% 50%;
+}
+.fork__tag {
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.75);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+.fork__card h2 { margin-bottom: var(--space-xs); }
+.fork__card p { color: rgba(255,255,255,0.9); }
+
+.fork__card--design {
+  background-image: linear-gradient(120deg,
+    var(--preview-design-a), var(--preview-design-b),
+    var(--preview-design-c), var(--preview-design-a));
+}
+.fork__card--research {
+  background-image: linear-gradient(120deg,
+    var(--preview-research-a), var(--preview-research-b),
+    var(--preview-research-c), var(--preview-research-a));
+}
+.fork__card--bridge {
+  background-image: linear-gradient(120deg,
+    var(--preview-work-a), var(--preview-work-b),
+    var(--preview-work-c), var(--preview-work-a));
+}
+
+@media (max-width: 700px) {
+  .fork { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   PAGE INTRO (design.html / research.html / work.html)
+   ===================================================== */
+.page-intro {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-sm);
+}.page-intro h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: var(--space-sm); color: var(--color-accent-1); }
+.page-intro__sub { max-width: 60ch; margin-bottom: var(--space-sm); }
+
+/* Two-column layout — text on the left, a useful sidebar
+   (quick facts or the tag legend) filling the right side
+   instead of leaving it empty. Stacks on narrow screens. */
+.page-intro__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .page-intro__grid { grid-template-columns: 1fr; }
+}
+
+/* --- Quick facts sidebar (research.html, design.html) --- */
+.quick-facts {
+  border-left: 3px solid var(--color-accent-2);
+  padding-left: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.quick-facts__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-1);
+  margin-bottom: 2px;
+}
+.quick-facts__value { display: block; font-size: 1rem; }
+
+/* --- Tag legend (work.html) --- */
+.tag-legend {
+  border-left: 3px solid var(--color-accent-2);
+  padding-left: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.tag-legend__item { display: flex; align-items: center; gap: var(--space-xs); }
+.tag-legend__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.tag-legend__dot[data-tag="design"] { background: var(--color-tag-design); }
+.tag-legend__dot[data-tag="research"] { background: var(--color-tag-research); }
+.tag-legend__dot[data-tag="bridge"] { background: var(--color-tag-bridge); }
+
+/* =====================================================
+   PROCESS steps (design.html)
+   ===================================================== */
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.process {
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-muted);
+}
+.process__num {
+  font-family: var(--font-mono);
+  color: var(--color-accent-1);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+@media (max-width: 700px) {
+  .process__steps { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   ART STRIP — full-bleed band for fine art. Uses the
+   page's own accent slots, so on design.html this renders
+   as a bright CMYK gradient automatically. To use a real
+   image, add background-image to a modifier class, see
+   comment near the bottom of this section.
+   ===================================================== */
+.art-strip {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 40vh;
+  background-image: url('../website_files/art/projection.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-md);
+}
+.art-strip__caption {
+  background: var(--color-paper);
+  padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ink);
+  border-radius: var(--radius);
+}
+/* To use a real image instead of the gradient, add:
+     .art-strip--yourpiece {
+       background-image: url('../images/your-art.jpg');
+     }
+   and add that class alongside "art-strip" in the HTML. */
+
+/* =====================================================
+   PROJECT GRID + CARDS — used on design.html and work.html
+   ===================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.project-card {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 6px solid var(--color-muted);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+.project-card[data-tag="design"] { border-color: var(--color-tag-design); }
+.project-card[data-tag="research"] { border-color: var(--color-tag-research); }
+.project-card[data-tag="bridge"] { border-color: var(--color-tag-bridge); }
+.project-card__image {
+  aspect-ratio: 4 / 3;
+  background: var(--color-paper);
+  border: 1px dashed var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+.image-placeholder { font-family: var(--font-mono); color: var(--color-muted); }
+.project-card h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+
+.project-card__bracket {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid var(--color-muted);
+  border-top: 2px solid var(--color-muted);
+  margin-bottom: var(--space-xs);
+}
+.project-card[data-tag="design"] .project-card__bracket { border-color: var(--color-tag-design); }
+.project-card[data-tag="research"] .project-card__bracket { border-color: var(--color-tag-research); }
+.project-card[data-tag="bridge"] .project-card__bracket { border-color: var(--color-tag-bridge); }
+
+.project-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.project-card.is-hidden { display: none; }
+
+/* =====================================================
+   CV SECTIONS (research.html)
+   ===================================================== */
+.cv-block { border-top: 1px solid var(--color-muted); }
+.cv-block h2 { margin-bottom: var(--space-sm); color: var(--color-accent-1); }
+.cv-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.cv-item__date { font-family: var(--font-mono); color: var(--color-accent-2); }
+.cv-item__body h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+.cv-item__body a { font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-accent-3); }
+@media (max-width: 600px) {
+  .cv-item { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   FILTER BAR (work.html)
+   ===================================================== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  border-top: 1px solid var(--color-muted);
+  border-bottom: 1px solid var(--color-muted);
+}
+#search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--color-card-bg);
+}
+.filter-pills { display: flex; gap: var(--space-xs); }
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-muted);
+  border-radius: 999px;
+  background: var(--color-card-bg);
+  cursor: pointer;
+}
+.pill.is-active {
+  background: var(--color-accent-2);
+  color: #fff;
+  border-color: var(--color-accent-2);
+}
+.no-results {
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  margin-top: var(--space-md);
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.button {
+  display: inline-block;
+  font-family: var(--font-mono);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-accent-1);
+  color: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-accent-1);
+}
+.button--outline {
+  background: transparent;
+  color: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+  margin-top: var(--space-sm);
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.site-footer {
+  border-top: 2px solid var(--color-accent-2);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  transition: border-color 0.3s ease;
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+.contact {
+  border-top: 1px solid var(--color-muted);
+  padding-top: var(--space-md);
+}
+.contact h2 { margin-bottom: var(--space-sm); }
+.contact p { margin-bottom: var(--space-md); }

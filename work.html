@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Work — Your Name</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-work">
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__name">George Weiler — Design & Research</a>
+      <div class="nav__links">
+        <a href="design.html">Design</a>
+        <a href="research.html">Research</a>
+        <a href="work.html" class="is-active">All Work</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+  <div class="page-intro__grid">
+    <div class="page-intro__text">
+      <p class="eyebrow">All Work</p>
+      <h1>Everything, searchable</h1>
+      <p class="page-intro__sub">
+        This page allows you to explore all of my work, from research and memos to
+        art and design. Additionally you can see where these two fields intersect,
+        looking at projects where research and data are transposed into beautiful,
+        legible visualizations.
+      </p>
+    </div>
+    <div class="tag-legend">
+      <div class="tag-legend__item"><span class="tag-legend__dot" data-tag="design"></span>Design</div>
+      <div class="tag-legend__item"><span class="tag-legend__dot" data-tag="research"></span>Research</div>
+      <div class="tag-legend__item"><span class="tag-legend__dot" data-tag="bridge"></span>Bridge — where they meet</div>
+    </div>
+  </div>
+</section>
+
+    <!-- ============================================= -->
+    <!-- FILTER CONTROLS — search box + tag pills.      -->
+    <!-- js/script.js reads data-tag on each card and   -->
+    <!-- the text of each card to filter/search.        -->
+    <!-- ============================================= -->
+    <section class="filter-bar">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search projects…"
+        aria-label="Search projects"
+      >
+      <div class="filter-pills">
+        <button class="pill is-active" data-filter="all">All</button>
+        <button class="pill" data-filter="design">Design</button>
+        <button class="pill" data-filter="research">Research</button>
+        <button class="pill" data-filter="bridge">Bridge</button>
+      </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- COMBINED GRID — data-tag can be "design",      -->
+    <!-- "research", or "bridge" (projects that are     -->
+    <!-- genuinely both). Duplicate .project-card for   -->
+    <!-- each item across your whole body of work.      -->
+    <!-- ============================================= -->
+    <!-- ============================================= -->
+    <!-- COMBINED GRID — populated automatically from    -->
+    <!-- js/projects.js. Add projects there, not here.   -->
+    <!-- ============================================= -->
+    <section class="project-grid">
+      <div class="grid" id="work-grid"></div>
+      <p id="no-results" class="no-results" hidden>No projects match your search.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>george_weiler@brown.edu · www.linkedin.com/in/george-weiler26 · © <span id="year"></span></p>
+  </footer>
+
+  <script src="js/projects.js"></script>
+  <script src="js/script.js"></script></body>
+</html>

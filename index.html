@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>George Weiler — Design & Research</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="page-home">
+  <!-- ============================================= -->
+  <!-- NAV — same nav bar appears on every page       -->
+  <!-- ============================================= -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__name">George Weiler — Design & Research</a>
+      <div class="nav__links">
+        <a href="design.html">Design</a>
+        <a href="research.html">Research</a>
+        <a href="work.html">All Work</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- HERO — this is the whole "fork" moment.        -->
+  <!-- Replace the placeholder copy with your own.    -->
+  <!-- ============================================= -->
+  <main>
+    <section class="hero">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">MPA Candidate — Graphic Designer</p>
+          <h1 class="hero__headline">
+            George Weiler Design and Research
+          </h1>
+          <p class="hero__sub">
+            I'm an MPA candidate at Brown University researching election policy 
+            and voting rights, with campaign communications experience on the ground. 
+            My design work grew out of the same question research did: how language 
+            and image shape political persuasion.
+          </p>
+        </div>
+
+        <!-- Rotating image slot — cycles through placeholder
+             frames (see js/script.js). Links to your work page.
+             Replace each .image-placeholder span with a real
+             <img> tag once you have images. -->
+        <a href="work.html" class="hero__image-slot" id="hero-rotator">
+          <div class="hero__image-frame is-active">
+            <span class="image-placeholder">
+              <img src="website_files/design/tza icons.png" alt="TZA Icons for Website">
+          </div>
+          <div class="hero__image-frame">
+            <span class="image-placeholder">
+            <img src="website_files/design/shirts.png" alt="ETHS Shirts">
+          </div>
+          <div class="hero__image-frame">
+            <span class="image-placeholder">
+            <img src="website_files/design/npvic.png" alt="National Popular Vote Interstate Compact Instagram Infographic">
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- THE FORK — three doors in, one per audience    -->
+    <!-- ============================================= -->
+    <section class="fork">
+      <a href="design.html" class="fork__card fork__card--design">
+        <span class="fork__tag">01</span>
+        <h2>Design</h2>
+        <p>Logo, brand, and marketing work. What it's like to work with me.</p>
+      </a>
+      <a href="research.html" class="fork__card fork__card--research">
+        <span class="fork__tag">02</span>
+        <h2>Research</h2>
+        <p>Public policy & political analysis. Thesis, papers, CV.</p>
+      </a>
+      <a href="work.html" class="fork__card fork__card--bridge">
+        <span class="fork__tag">03</span>
+        <h2>All Work</h2>
+        <p>Search and filter everything, including where the two meet.</p>
+      </a>
+    </section>
+  </main>
+
+  <!-- ============================================= -->
+  <!-- FOOTER — same on every page                    -->
+  <!-- ============================================= -->
+  <footer class="site-footer">
+    <p>george_weiler@brown.edu · www.linkedin.com/in/george-weiler26 · © <span id="year"></span></p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
