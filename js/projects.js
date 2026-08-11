@@ -31,7 +31,7 @@ const projects = [
     id: "thesis",
     title: "Honors Thesis in Behavioral Science",
     description: "Fighting Words: Utilizing Populist Language as a Predictor in US Election Models",
-    image: "/website_files/pdf/copsy logo.jpg",
+    image: "website_files/pdf/copsy logo.jpg",
     tags: ["research"],
     keywords: ["language", "policy", "statistics", "populism", "research"]
   },
@@ -39,7 +39,7 @@ const projects = [
     id: "TZA icons",
     title: "Tow Zone Alerts Icons",
     description: "A variety of original iconography designed for a Boston-based startup for use on websites and marketing materials.",
-    image: "/website_files/design/tza icons.png",
+    image: "website_files/design/tza icons.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -47,7 +47,7 @@ const projects = [
     id: "TZA insta",
     title: "Tow Zone Alerts Instagram Post",
     description: "One of many instagram posts designed for TZA to share on their Instagram.",
-    image: "/website_files/design/tza insta 2.png",
+    image: "website_files/design/tza insta 2.png",
     tags: ["design"],
     keywords: ["social media", "marketing"]
   },
@@ -55,7 +55,7 @@ const projects = [
     id: "TZA pager",
     title: "Tow Zone Alerts One-Pager",
     description: "A one-pager designed in Adobe InDesign, documenting the collaboration process for TZA's corporate partners.",
-    image: "/website_files/design/onepage.png",
+    image: "website_files/design/onepage.png",
     tags: ["design"],
     keywords: ["brand cohesion", "marketing"]
   },
@@ -63,7 +63,7 @@ const projects = [
     id: "HNMUN",
     title: "Model UN Recruitment Post",
     description: "One of a handful of social posts for the Brown MUN team to advertise trips and recruitment.",
-    image: "/website_files/design/hnmun.png",
+    image: "website_files/design/hnmun.png",
     tags: ["design"],
     keywords: ["social media", "marketing"]
   },
@@ -71,7 +71,7 @@ const projects = [
     id: "popular vote",
     title: "NPVIC Social Media Infographic",
     description: "A social media post advertising the National Popular Vote Interstate Compact, as well as the policy ramifications.",
-    image: "/website_files/design/npvic.png",
+    image: "website_files/design/npvic.png",
     tags: ["bridge", "policy", "elections"],
     keywords: ["social media", "marketing", "politics", "policy"]
   },
@@ -79,7 +79,7 @@ const projects = [
     id: "everything old",
     title: "Old Design Practice",
     description: "A variety of original icons and designs made to demonstrate logomark skills and possible collaboration styles.",
-    image: "/website_files/design/everything_old.png",
+    image: "website_files/design/everything_old.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -87,7 +87,7 @@ const projects = [
     id: "Music Club",
     title: "ETHS Music Tech Club Badge",
     description: "An original badge made for the Evanston High School music tech club, used to promote the new club and put on merchandise.",
-    image: "/website_files/design/music.png",
+    image: "website_files/design/music.png",
     tags: ["design"],
     keywords: ["logo", "marketing", "merch"]
   },
@@ -95,7 +95,7 @@ const projects = [
     id: "shirts",
     title: "ETHS T-Shirts",
     description: "Four shirt designs proposed to the ETHS administration, with the bottom left design sold as an official design.",
-    image: "/website_files/design/shirts.png",
+    image: "website_files/design/shirts.png",
     tags: ["design"],
     keywords: ["logo", "marketing", "merch"]
   },
@@ -103,7 +103,7 @@ const projects = [
     id: "TZA card",
     title: "Tow Zone Alerts Business Card",
     description: "An official business card design for the startup TZA.",
-    image: "/website_files/design/bc.png",
+    image: "website_files/design/bc.png",
     tags: ["design"],
     keywords: ["logo", "marketing", "merch"]
   },
@@ -111,7 +111,7 @@ const projects = [
     id: "northbound",
     title: "NorthBound Supply Co.",
     description: "Branding guide designed as a mockup for a fictional company, Northbound, that sells camping gear through three subbrands.",
-    image: "/website_files/design/northbound.png",
+    image: "website_files/design/northbound.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -119,7 +119,7 @@ const projects = [
     id: "everest",
     title: "Everest Film Company",
     description: "Branding guide designed as a mockup for a fictional company, Everest, a film studio and distributor.",
-    image: "/website_files/design/everest.png",
+    image: "website_files/design/everest.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -127,7 +127,7 @@ const projects = [
     id: "gofish",
     title: "Go Fish Foods",
     description: "Branding guide designed as a mockup for a fictional company, Go Fish Foods, that sells health, frozen seafood products.",
-    image: "/website_files/design/gofish.png",
+    image: "website_files/design/gofish.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -135,7 +135,7 @@ const projects = [
     id: "entrance",
     title: "Entrance",
     description: "Branding guide designed as a mockup for a fictional company, Entrance, that offers online, introductory music lessons.",
-    image: "/website_files/design/northbound.png",
+    image: "website_files/design/northbound.png",
     tags: ["design"],
     keywords: ["logo", "marketing"]
   },
@@ -143,7 +143,7 @@ const projects = [
     id: "BPR articles",
     title: "Brown Political Review Opinion Articles",
     description: "Five original pieces published in the BPR, ranging from election policy to language analysis",
-    image: "/website_files/pdf/bpr.png",
+    image: "website_files/pdf/bpr.png",
     tags: ["research"],
     keywords: ["policy", "elections"]
   },
@@ -151,7 +151,7 @@ const projects = [
     id: "Corpus",
     title: "Corpus Linguistics Newspaper Research",
     description: "An informal study into the relationship between issue framing and political bias in major publications.",
-    image: "/website_files/pdf/corpus.png",
+    image: "website_files/pdf/corpus.png",
     tags: ["research"],
     keywords: ["campaign", "rebrand"]
   }
